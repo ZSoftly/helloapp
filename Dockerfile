@@ -9,4 +9,4 @@ RUN apt update && \
 WORKDIR /opt
 
 # Copy application into artifact
-COPY ./hello.sh /opt
+COPY helloword.sh /opt
