@@ -12,11 +12,11 @@ on:
     
 jobs:
 
-  push-image-to-docker-hub:
+  build:
     name: Build and Push Image to DockerHub
     runs-on: [ ubuntu:18.04, ubuntu:20.04, ubuntu-latest ] 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: login to DockerHub
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: build Docker image && version
