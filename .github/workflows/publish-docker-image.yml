@@ -1,0 +1,30 @@
+name: Build Image and Push to DockerHub # just naming the build
+
+# creaing env variables
+env:
+  DOCKER_USER: ${{secrets.DOCKER_USER}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+  REPO_NAME: ${{secrets.REPO_NAME}}
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+  
+    push-image-to-docker-hub: Push the helloapp to DockeHub
+    runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v2
+        - name: login to DockerHub
+          run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        - name: build Docker image && version
+          run: |
+            echo " ---------------------"
+            docker build . --file Dockerfile --tag $REPO_NAME:1.0.0
+            echo " ---------------------"
+        - name: publish to DockerHub
+          run: docker push $REPO_NAME:1.0.0
