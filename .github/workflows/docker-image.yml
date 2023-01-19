@@ -1,10 +1,9 @@
-name: Build helloworld App
+name: Test Build DockerImage
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+
 
 jobs:
 
