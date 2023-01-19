@@ -14,7 +14,7 @@ jobs:
 
   push-image-to-docker-hub:
     name: Build and Push Image to DockerHub
-    runs-on: [ ubuntu:18.04, ubuntu:20.04, ubuntu-latest ] 
+    runs-on: ubuntu:latest
     steps:
     - uses: actions/checkout@v2
     - name: login to DockerHub
